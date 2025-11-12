@@ -23,6 +23,7 @@ def main():
     player = Player(PLAYER_SPAWN_X, PLAYER_SPAWN_Y)
     # Sets main gameloop
     while True:
+        player.update(dt)
     # Initial checks
         log_state() # for boot.dev tests
         for event in pygame.event.get():
