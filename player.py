@@ -4,8 +4,11 @@ from constants import (LINE_WIDTH,
                        PLAYER_RADIUS,
                        PLAYER_COLOUR,
                        PLAYER_TURN_SPEED,
+                       PLAYER_SPEED,
                        KEYBIND_ROTATE_LEFT,
-                       KEYBIND_ROTATE_RIGHT,)
+                       KEYBIND_ROTATE_RIGHT,
+                       KEYBIND_MOVE_FORWARD,
+                       KEYBIND_MOVE_BACKWARD,)
 
 class Player(CircleShape):
     def __init__(self, x, y):
@@ -28,7 +31,12 @@ class Player(CircleShape):
     def rotate(self, dt):
         self.rotation += PLAYER_TURN_SPEED * dt
         return
-    
+    def move (self, dt):
+        unit_vector = pygame.Vector2(0, 1)
+        rotated_vector = unit_vector.rotate(self.rotation)
+        rotated_with_speed_vector = rotated_vector * PLAYER_SPEED * dt
+        self.position += rotated_with_speed_vector
+
     #
     def update(self, dt):
         keys = pygame.key.get_pressed()
@@ -37,3 +45,7 @@ class Player(CircleShape):
             self.rotate(-dt)
         if keys[KEYBIND_ROTATE_RIGHT]:
             self.rotate(dt)
+        if keys[KEYBIND_MOVE_FORWARD]:
+            self.move(dt)
+        if keys[KEYBIND_MOVE_BACKWARD]:
+            self.move(-dt)
