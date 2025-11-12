@@ -20,6 +20,9 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0 # Stores time between current and previous frames
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
     player = Player(PLAYER_SPAWN_X, PLAYER_SPAWN_Y)
     # Sets main gameloop
     while True:
@@ -29,10 +32,11 @@ def main():
             if event.type == pygame.QUIT:
                 return
         # Gamestate update and input processing
-        player.update(dt)
+        updatable.update(dt)
         # Screen/display updating
         screen.fill(BACKGROUND_COLOUR) # sets black (lightly gray) display surface
-        player.draw(screen)
+        for drawable_element in drawable:
+            drawable_element.draw(screen)
         pygame.display.flip() # updates screen at the end of gameloop
         #Timekeeping and FPS limiting
         dt = 1/1000 * clock.tick(TICK_RATE)
