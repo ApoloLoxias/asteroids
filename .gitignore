@@ -9,5 +9,8 @@ wheels/
 # Virtual environments
 .venv
 
+# Test files
+*_test
+
 # Logfiles
 game_state.jsonl
