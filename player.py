@@ -3,7 +3,9 @@ from circleshape import CircleShape
 from constants import (LINE_WIDTH,
                        PLAYER_RADIUS,
                        PLAYER_COLOUR,
-                       PLAYER_TURN_SPEED)
+                       PLAYER_TURN_SPEED,
+                       KEYBIND_ROTATE_LEFT,
+                       KEYBIND_ROTATE_RIGHT,)
 
 class Player(CircleShape):
     def __init__(self, x, y):
@@ -31,7 +33,7 @@ class Player(CircleShape):
     def update(self, dt):
         keys = pygame.key.get_pressed()
 
-        if keys[pygame.K_a]:
+        if keys[KEYBIND_ROTATE_LEFT]:
             self.rotate(-dt)
-        if keys[pygame.K_d]:
+        if keys[KEYBIND_ROTATE_RIGHT]:
             self.rotate(dt)

@@ -23,17 +23,18 @@ def main():
     player = Player(PLAYER_SPAWN_X, PLAYER_SPAWN_Y)
     # Sets main gameloop
     while True:
-        player.update(dt)
-    # Initial checks
+        # Initial checks
         log_state() # for boot.dev tests
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-    # Screen/display updating
+        # Gamestate update and input processing
+        player.update(dt)
+        # Screen/display updating
         screen.fill(BACKGROUND_COLOUR) # sets black (lightly gray) display surface
         player.draw(screen)
         pygame.display.flip() # updates screen at the end of gameloop
-    #Timekeeping and FPS limiting
+        #Timekeeping and FPS limiting
         dt = 1/1000 * clock.tick(TICK_RATE)
 
 if __name__ == "__main__":
