@@ -4,6 +4,7 @@ import pygame
 from constants import (
       SCREEN_HEIGHT, SCREEN_WIDTH,
       BACKGROUND_COLOUR,
+      TICK_RATE,
       )
 from logger import log_state
 
@@ -15,15 +16,20 @@ def main():
     # Preliminary initializations
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    clock = pygame.time.Clock()
+    dt = 0 # Stores time between current and previous frames
     # Sets main gameloop
     while True:
+    # Initial checks
         log_state() # for boot.dev tests
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+    # Screen/display updating
         screen.fill(BACKGROUND_COLOUR) # sets black (lightly gray) display surface
-
         pygame.display.flip() # updates screen at the end of gameloop
+    #Timekeeping and FPS limiting
+        dt = 1/1000 * clock.tick(TICK_RATE)
 
 if __name__ == "__main__":
     main()
