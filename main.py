@@ -1,7 +1,10 @@
 # Importing libraries
 import pygame
 # Importing project modules
-from constants import SCREEN_HEIGHT, SCREEN_WIDTH
+from constants import (
+      SCREEN_HEIGHT, SCREEN_WIDTH,
+      BACKGROUND_COLOUR,
+      )
 from logger import log_state
 
 def main():
@@ -16,7 +19,7 @@ def main():
     while True:
         log_state() # for boot.dev tests
 
-        screen.fill((34, 34, 34)) # sets black (lightly gray) display surface
+        screen.fill(BACKGROUND_COLOUR) # sets black (lightly gray) display surface
 
         pygame.display.flip() # updates screen at the end of gameloop
 
