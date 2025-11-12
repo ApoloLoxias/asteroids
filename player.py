@@ -1,7 +1,8 @@
 import pygame
 from circleshape import CircleShape
 from constants import (LINE_WIDTH,
-                       PLAYER_RADIUS,)
+                       PLAYER_RADIUS,
+                       PLAYER_COLOUR,)
 
 class Player(CircleShape):
     def __init__(self, x, y):
@@ -18,6 +19,6 @@ class Player(CircleShape):
         return [a, b, c]
     # draws a triangular sprite on the screen, using the vertices from triangle(self)
     def draw(self, screen):
-        pygame.draw.polygon(screen, "white", self.triangle(), LINE_WIDTH)
+        pygame.draw.polygon(screen, PLAYER_COLOUR, self.triangle(), LINE_WIDTH)
 
     

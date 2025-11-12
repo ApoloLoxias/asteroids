@@ -5,6 +5,7 @@ from constants import (
       SCREEN_HEIGHT, SCREEN_WIDTH,
       BACKGROUND_COLOUR,
       TICK_RATE,
+      PLAYER_SPAWN_X, PLAYER_SPAWN_Y,
       )
 from logger import log_state
 from player import Player
@@ -19,7 +20,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0 # Stores time between current and previous frames
-    player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+    player = Player(PLAYER_SPAWN_X, PLAYER_SPAWN_Y)
     # Sets main gameloop
     while True:
     # Initial checks
