@@ -7,6 +7,7 @@ from constants import (
       TICK_RATE,
       )
 from logger import log_state
+from player import Player
 
 def main():
     # Initial terminal message
@@ -18,6 +19,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0 # Stores time between current and previous frames
+    player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
     # Sets main gameloop
     while True:
     # Initial checks
@@ -27,6 +29,7 @@ def main():
                 return
     # Screen/display updating
         screen.fill(BACKGROUND_COLOUR) # sets black (lightly gray) display surface
+        player.draw(screen)
         pygame.display.flip() # updates screen at the end of gameloop
     #Timekeeping and FPS limiting
         dt = 1/1000 * clock.tick(TICK_RATE)
