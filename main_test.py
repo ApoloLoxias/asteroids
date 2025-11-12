@@ -9,6 +9,8 @@ from constants import (
       )
 from logger import log_state
 from player import Player
+
+
 from asteroid import Asteroid
 
 def main():
@@ -23,11 +25,17 @@ def main():
     dt = 0 # Stores time between current and previous frames
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
-    asteroids = pygame.sprite.Gorup()
     Player.containers = (updatable, drawable)
-    Asteroid.containers = (asteroids, updatable, drawable)
+
+    Asteroid.containers = (updatable, drawable)
+
+
     player = Player(PLAYER_SPAWN_X, PLAYER_SPAWN_Y)
-    
+
+    asteroid = Asteroid(PLAYER_SPAWN_X, PLAYER_SPAWN_Y, 20)
+    asteroid.velocity = pygame.Vector2(100, 100)
+
+
     # Sets main gameloop
     while True:
         # Initial checks
