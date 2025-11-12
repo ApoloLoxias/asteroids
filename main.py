@@ -18,7 +18,9 @@ def main():
     # Sets main gameloop
     while True:
         log_state() # for boot.dev tests
-
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return
         screen.fill(BACKGROUND_COLOUR) # sets black (lightly gray) display surface
 
         pygame.display.flip() # updates screen at the end of gameloop
