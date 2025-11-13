@@ -1,5 +1,6 @@
 # Importing libraries
 import pygame
+import sys
 # Importing project modules
 from constants import (
       SCREEN_HEIGHT, SCREEN_WIDTH,
@@ -7,7 +8,9 @@ from constants import (
       TICK_RATE,
       PLAYER_SPAWN_X, PLAYER_SPAWN_Y,
       )
-from logger import log_state
+from logger import (log_state,
+                    log_event,
+)
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
@@ -40,6 +43,12 @@ def main():
                 return
         # Gamestate update and input processing
         updatable.update(dt)
+        # Checks for colisions
+        for asteroid in asteroids:
+            if asteroid.collides_with(player):
+                log_event("player_hit")
+                print("Game over!")
+                sys.exit()
         # Screen/display updating
         screen.fill(BACKGROUND_COLOUR) # sets black (lightly gray) display surface
         for drawable_element in drawable:
