@@ -18,6 +18,8 @@ PLAYER_SPAWN_Y = SCREEN_HEIGHT / 2
 PLAYER_COLOUR = (240, 240, 240) # White (light gray)
 PLAYER_TURN_SPEED = 300
 PLAYER_SPEED = 200 # Translation speed
+SHOT_RADIUS = 5
+SHOT_COLOUR = (240, 40, 40) # Red
 
 # Asteroids configuration
 ASTEROID_MIN_RADIUS = 20
