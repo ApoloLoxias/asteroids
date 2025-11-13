@@ -15,6 +15,7 @@ from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from shot import Shot
+
 def main():
     # Initial terminal message
     print(f"Starting Asteroids with pygame version: {pygame.version.ver}")
@@ -28,14 +29,13 @@ def main():
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
     Player.containers = (updatable, drawable)
     Asteroid.containers = (asteroids, updatable, drawable)
     AsteroidField.containers = (updatable)
-    Shot.containers = (updatable, drawable)
     player = Player(PLAYER_SPAWN_X, PLAYER_SPAWN_Y)
     asteroidfield = AsteroidField()
-    shot = Shot(300, 300)
-    shot.velocity = pygame.Vector2(500, 100)
+    Shot.containers = (shots, drawable, updatable)
     
     # Sets main gameloop
     while True:

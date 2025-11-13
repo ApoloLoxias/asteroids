@@ -20,6 +20,7 @@ PLAYER_TURN_SPEED = 300
 PLAYER_SPEED = 200 # Translation speed
 SHOT_RADIUS = 5
 SHOT_COLOUR = (240, 40, 40) # Red
+PLAYER_SHOT_SPEED = 500
 
 # Asteroids configuration
 ASTEROID_MIN_RADIUS = 20

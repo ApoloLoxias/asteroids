@@ -14,6 +14,7 @@ from logger import (log_state,
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from shot import Shot
 
 def main():
     # Initial terminal message
@@ -28,11 +29,13 @@ def main():
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
     Player.containers = (updatable, drawable)
     Asteroid.containers = (asteroids, updatable, drawable)
     AsteroidField.containers = (updatable)
     player = Player(PLAYER_SPAWN_X, PLAYER_SPAWN_Y)
     asteroidfield = AsteroidField()
+    Shot.containers = (shots, updatable, drawable)
     
     # Sets main gameloop
     while True:
