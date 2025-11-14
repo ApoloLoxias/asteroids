@@ -10,7 +10,7 @@ wheels/
 .venv
 
 # Test files
-*_test
+*_test*
 
 # Logfiles
 game_state.jsonl
