@@ -4,6 +4,7 @@ from constants import (LINE_WIDTH,
                        PLAYER_RADIUS,
                        PLAYER_COLOUR,
                        PLAYER_TURN_SPEED,
+                       GYRO_SPEED,
                        PLAYER_SPEED,
                        PLAYER_SHOT_SPEED,
                        PLAYER_SHOT_COOLDOWN,
@@ -33,6 +34,11 @@ class Player(TriangleShape):
     def gimbal(self, dt):
         self.angular_velocity += PLAYER_TURN_SPEED * dt
         return
+    def stabilize(self, dt):
+        if self.angular_velocity > 0:
+            self.angular_velocity -= GYRO_SPEED * dt
+        if self.angular_velocity < 0:
+            self.angular_velocity += GYRO_SPEED * dt
 
     def rotate(self, dt):
         self.rotation += self.angular_velocity * dt
@@ -54,8 +60,10 @@ class Player(TriangleShape):
 
         if keys[KEYBIND_ROTATE_LEFT]:
             self.gimbal(-dt)
-        if keys[KEYBIND_ROTATE_RIGHT]:
+        elif keys[KEYBIND_ROTATE_RIGHT]:
             self.gimbal(dt)
+        else:
+            self.stabilize(dt)
         if keys[KEYBIND_MOVE_FORWARD]:
             self.thrust(dt)
         if keys[KEYBIND_MOVE_BACKWARD]:
