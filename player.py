@@ -66,8 +66,8 @@ class Player(TriangleShape):
             self.stabilize(dt)
         if keys[KEYBIND_MOVE_FORWARD]:
             self.thrust(dt)
-        if keys[KEYBIND_MOVE_BACKWARD]:
-            self.thrust(-dt)
+        #if keys[KEYBIND_MOVE_BACKWARD]:
+            #self.thrust(-dt)
         if keys[pygame.K_SPACE]:
             self.shoot()
 
