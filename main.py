@@ -52,7 +52,7 @@ def main():
                 if asteroid is asteroid2:
                     continue
                 if asteroid.position.distance_to(asteroid2.position) !=0 and asteroid.collides_with(asteroid2):
-                    print("Asteroid collision")
+                    asteroid.bounce(asteroid2)
             if asteroid.collides_with(player):
                 log_event("player_hit")
                 print("Game over!")
