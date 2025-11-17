@@ -51,7 +51,7 @@ class Player(TriangleShape):
         if self.shot_timer > 0:
             return
         shot = Shot(self.position[0], self.position[1])
-        shot.velocity =  pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOT_SPEED
+        shot.velocity =  pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOT_SPEED + self.velocity
         self.shot_timer = PLAYER_SHOT_COOLDOWN
     #
     def update(self, dt):
