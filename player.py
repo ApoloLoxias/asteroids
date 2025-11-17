@@ -30,9 +30,12 @@ class Player(TriangleShape):
         rotated_vector = unit_vector.rotate(self.rotation)
         rotated_with_speed_vector = rotated_vector * PLAYER_SPEED * dt
         self.velocity += rotated_with_speed_vector
+    def gimbal(self, dt):
+        self.angular_velocity += PLAYER_TURN_SPEED * dt
+        return
 
     def rotate(self, dt):
-        self.rotation += PLAYER_TURN_SPEED * dt
+        self.rotation += self.angular_velocity * dt
         return
     def move (self, dt):
         self.position += self.velocity * dt
@@ -50,9 +53,9 @@ class Player(TriangleShape):
         self.shot_timer -= dt
 
         if keys[KEYBIND_ROTATE_LEFT]:
-            self.rotate(-dt)
+            self.gimbal(-dt)
         if keys[KEYBIND_ROTATE_RIGHT]:
-            self.rotate(dt)
+            self.gimbal(dt)
         if keys[KEYBIND_MOVE_FORWARD]:
             self.thrust(dt)
         if keys[KEYBIND_MOVE_BACKWARD]:
@@ -61,6 +64,7 @@ class Player(TriangleShape):
             self.shoot()
 
         self.move(dt)
+        self.rotate(dt)
 
         if self.position[0] < 0:
             self.position[0] = SCREEN_WIDTH

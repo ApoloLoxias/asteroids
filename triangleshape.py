@@ -8,6 +8,7 @@ class TriangleShape(pygame.sprite.Sprite):
             super().__init__()
         self.position = pygame.Vector2(x, y)
         self.velocity = pygame.Vector2(0, 0)
+        self.angular_velocity = 0
         self.rotation = 0
         self.radius = radius
 
