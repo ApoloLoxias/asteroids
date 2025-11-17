@@ -10,7 +10,9 @@ from constants import (LINE_WIDTH,
                        KEYBIND_ROTATE_LEFT,
                        KEYBIND_ROTATE_RIGHT,
                        KEYBIND_MOVE_FORWARD,
-                       KEYBIND_MOVE_BACKWARD,)
+                       KEYBIND_MOVE_BACKWARD,
+                       SCREEN_HEIGHT,
+                       SCREEN_WIDTH,)
 from shot import Shot
 
 class Player(TriangleShape):
@@ -52,3 +54,12 @@ class Player(TriangleShape):
             self.move(-dt)
         if keys[pygame.K_SPACE]:
             self.shoot()
+
+        if self.position[0] < 0:
+            self.position[0] = SCREEN_WIDTH
+        if self.position[0] > SCREEN_WIDTH:
+            self.position[0] = 0
+        if self. position[1] <0:
+            self.position[1] = SCREEN_HEIGHT
+        if self.position[1] > SCREEN_HEIGHT:
+            self.position [1] = 0
