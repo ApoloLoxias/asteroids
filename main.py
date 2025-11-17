@@ -48,6 +48,11 @@ def main():
         updatable.update(dt)
         # Checks for colisions
         for asteroid in asteroids:
+            for asteroid2 in asteroids:
+                if asteroid is asteroid2:
+                    continue
+                if asteroid.position.distance_to(asteroid2.position) !=0 and asteroid.collides_with(asteroid2):
+                    print("Asteroid collision")
             if asteroid.collides_with(player):
                 log_event("player_hit")
                 print("Game over!")
