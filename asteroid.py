@@ -39,4 +39,4 @@ class Asteroid(CircleShape):
         O2 = other.position
         dv = v1-v2
         dO = O1-O2
-        self.velocity =  v1 = ((2*m1)/(m1+m2))*((dv.dot(dO))/((O1.distance_to(O2))**2))*dO
+        self.velocity =  v1 = ((2*m1)/(m1+m2))*((dv.dot(dO))/((O1.distance_to(O2))**2))*dO.normalize()
