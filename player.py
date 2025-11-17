@@ -24,14 +24,19 @@ class Player(TriangleShape):
     def draw(self, screen):
         pygame.draw.polygon(screen, PLAYER_COLOUR, self.triangle(), LINE_WIDTH)
 
+
+    def thrust(self, dt):
+        unit_vector = pygame.Vector2(0, 1)
+        rotated_vector = unit_vector.rotate(self.rotation)
+        rotated_with_speed_vector = rotated_vector * PLAYER_SPEED * dt
+        self.velocity += rotated_with_speed_vector
+
     def rotate(self, dt):
         self.rotation += PLAYER_TURN_SPEED * dt
         return
     def move (self, dt):
-        unit_vector = pygame.Vector2(0, 1)
-        rotated_vector = unit_vector.rotate(self.rotation)
-        rotated_with_speed_vector = rotated_vector * PLAYER_SPEED * dt
-        self.position += rotated_with_speed_vector
+        self.position += self.velocity * dt
+
 
     def shoot(self):
         if self.shot_timer > 0:
@@ -49,11 +54,13 @@ class Player(TriangleShape):
         if keys[KEYBIND_ROTATE_RIGHT]:
             self.rotate(dt)
         if keys[KEYBIND_MOVE_FORWARD]:
-            self.move(dt)
+            self.thrust(dt)
         if keys[KEYBIND_MOVE_BACKWARD]:
-            self.move(-dt)
+            self.thrust(-dt)
         if keys[pygame.K_SPACE]:
             self.shoot()
+
+        self.move(dt)
 
         if self.position[0] < 0:
             self.position[0] = SCREEN_WIDTH
