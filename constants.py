@@ -12,7 +12,7 @@ TICK_RATE = 60 # In Hz
 LINE_WIDTH = 2 # For the contouring; if ==0: fills up the sprites
 
 # Player configuration
-PLAYER_RADIUS = 20 # Of the circular hitbox
+PLAYER_RADIUS = 20 # Radius of a cirlce used to generate the triangular shape
 PLAYER_SPAWN_X = SCREEN_WIDTH / 2
 PLAYER_SPAWN_Y = SCREEN_HEIGHT / 2
 PLAYER_COLOUR = (240, 240, 240) # White (light gray)
